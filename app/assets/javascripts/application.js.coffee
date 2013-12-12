@@ -16,6 +16,7 @@ window.App = Ember.Application.createWithMixins Ember.Facebook,
   LOG_TRANSITIONS: true
   LOG_TRANSITIONS_INTERNAL: true
   LOG_VIEW_LOOKUPS: true
+  LOG_BINDINGS: true
 
 App.set 'appId', '178730775657812'
 #= require_tree .
