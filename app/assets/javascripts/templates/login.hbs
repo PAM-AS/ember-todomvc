@@ -11,7 +11,20 @@
         <label for="password" class="control-label">Password</label>
         {{input type="password" class="form-control" id="password" value=password placeholder="Password"}}
       </div>
-      <button type="submit" class="btn btn-primary pull-right">Log in</button>
+      <button type="submit" class="btn btn-primary">Log in</button>
     </form>
+    <div>
+      <p style="text-align:center">OR</p>
+      {{#if App.FBUser}}
+        <div>
+          <img {{bind-attr src="App.FBUser.picture" alt="App.FBUser.name"}} />
+          {{App.FBUser.name}}
+          <a href="#" {{action "logout" target="FB"}}>Logout</a>
+        <div>
+      {{else}}
+        <div>
+          {{#view Ember.FacebookView type="login-button" data-size="large" data-scope="email,offline_access"}}Log in{{/view}}
+        </div>
+      {{/if}}
   </div>
 </div>
