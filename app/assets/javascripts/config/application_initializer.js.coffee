@@ -38,4 +38,3 @@ Ember.Application.initializer
       # serverTokenEndpoint: 'api/v1/session'
       serverTokenEndpoint: 'http://de1.pam.as:3003/api/v1/session'
       crossOriginWhitelist: ['http://de1.pam.as:3003']
-
