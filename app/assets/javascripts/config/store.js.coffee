@@ -1,6 +1,6 @@
 DS.ActiveModelAdapter.reopen
-  namespace: 'api/v1'
-  # host: 'http://de1.pam.as:3002'
+  # namespace: 'api/v1'
+  host: 'http://de1.pam.as:3002'
 
 App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
 

@@ -36,13 +36,12 @@ App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMi
         FB.login ((response) =>
           # Make a new session
           if response.authResponse
-            FB.api '/me', (apiResponse) =>
-              requestOptions = @facebookTokenRequestOptions(response.authResponse.accessToken, response.authResponse.userID, apiResponse.name, apiResponse.email)
-              Ember.$.ajax(Ember.SimpleAuth.serverTokenEndpoint, requestOptions).then ((response) =>
-                @get('session').setup response
-                @send 'loginSucceeded'
-              ), (xhr, status, error) =>
-                @send 'loginFailed', xhr, status, error
+            requestOptions = @facebookTokenRequestOptions(response.authResponse.accessToken, response.authResponse.userID)
+            Ember.$.ajax(Ember.SimpleAuth.serverTokenEndpoint, requestOptions).then ((response) =>
+              @get('session').setup response
+              @send 'loginSucceeded'
+            ), (xhr, status, error) =>
+              @send 'loginFailed', xhr, status, error
 
           # Redirect to add email if nonexistent
           # Redirect to todos if email is present
