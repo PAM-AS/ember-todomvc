@@ -1,7 +1,7 @@
 App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMixin,
   tokenRequestOptions: (identification, password) ->
     postData = [
-      'grant_type=fb_access_token'
+      'grant_type=password'
       'username_or_email=' + identification
       'password=' + password
     ]
@@ -9,7 +9,7 @@ App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMi
 
   facebookTokenRequestOptions: (accessToken, userID, name, email) ->
     postData = [
-      'grant_type=facebook'
+      'grant_type=facebook_token'
       'fb_access_token=' + accessToken
       'fb_user_id=' + userID
       'fb_name=' + name if name?
