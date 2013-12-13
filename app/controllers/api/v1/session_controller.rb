@@ -10,16 +10,16 @@ module Api
             render json: {error: "Wrong username or password"}, status: 401
           end
         elsif params[:grant_type] == "facebook_token"
-          @facebook_auth = FacebookAuth.where("account_id = ?", params[:user_id]).first
+          @facebook_auth = FacebookAuth.where("account_id = ?", params[:fb_user_id]).first
           if @facebook_auth
             @user = @facebook_auth.user
             render json: @user.session_api_key, status: 201
           else
-            @user = User.create! name: params[:name], email: params[:email]
+            @user = User.create! name: params[:fb_name], email: params[:fb_email]
             if @user.new_record?
               render json: { errors: @user.errors.messages }, status: 422
             else
-              @facebook_auth = @user.facebook_auths.create account_id: params[:user_id], access_token: params[:access_token]
+              @facebook_auth = @user.facebook_auths.create account_id: params[:fb_user_id], access_token: params[:fb_access_token]
               render json: @user.session_api_key, status: 201
             end
           end

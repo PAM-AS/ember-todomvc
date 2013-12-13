@@ -7,11 +7,13 @@ App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMi
     ]
     @makePostData postData
 
-  facebookTokenRequestOptions: (accessToken, userID) ->
+  facebookTokenRequestOptions: (accessToken, userID, name, email) ->
     postData = [
       'grant_type=facebook'
       'fb_access_token=' + accessToken
       'fb_user_id=' + userID
+      'fb_name=' + name if name?
+      'fb_email=' + email if email?
     ]
     @makePostData postData
 
@@ -34,16 +36,17 @@ App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMi
         FB.login ((response) =>
           # Make a new session
           if response.authResponse
-            requestOptions = @facebookTokenRequestOptions(response.authResponse.accessToken, response.authResponse.userID)
-            Ember.$.ajax(Ember.SimpleAuth.serverTokenEndpoint, requestOptions).then ((response) =>
-              @get('session').setup response
-              @send 'loginSucceeded'
-            ), (xhr, status, error) =>
-              @send 'loginFailed', xhr, status, error
+            FB.api '/me', (apiResponse) =>
+              requestOptions = @facebookTokenRequestOptions(response.authResponse.accessToken, response.authResponse.userID, apiResponse.name, apiResponse.email)
+              Ember.$.ajax(Ember.SimpleAuth.serverTokenEndpoint, requestOptions).then ((response) =>
+                @get('session').setup response
+                @send 'loginSucceeded'
+              ), (xhr, status, error) =>
+                @send 'loginFailed', xhr, status, error
 
           # Redirect to add email if nonexistent
           # Redirect to todos if email is present
-        ), scope: 'email,publish_actions'
+        ), scope: 'email'
 
       else
         @_super()
