@@ -36,6 +36,6 @@ Ember.Application.initializer
       routeAfterLogin: 'todos'
       routeAfterLogout: 'login'
       # serverTokenEndpoint: 'api/v1/session'
-      serverTokenEndpoint: 'http://de1.pam.as:3002/api/v1/session'
-      crossOriginWhitelist: ['http://de1.pam.as:3002']
+      serverTokenEndpoint: 'http://de1.pam.as:3003/api/v1/session'
+      crossOriginWhitelist: ['http://de1.pam.as:3003']
 
