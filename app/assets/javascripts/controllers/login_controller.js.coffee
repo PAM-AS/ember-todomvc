@@ -7,13 +7,11 @@ App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMi
     ]
     @makePostData postData
 
-  facebookTokenRequestOptions: (accessToken, userID, name, email) ->
+  facebookTokenRequestOptions: (accessToken, userID) ->
     postData = [
       'grant_type=facebook_token'
       'fb_access_token=' + accessToken
       'fb_user_id=' + userID
-      'fb_name=' + name if name?
-      'fb_email=' + email if email?
     ]
     @makePostData postData
 
