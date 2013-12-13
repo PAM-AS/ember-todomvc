@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209125209) do
+ActiveRecord::Schema.define(version: 20131212190535) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20131209125209) do
   end
 
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
+
+  create_table "facebook_auths", force: true do |t|
+    t.integer  "account_id"
+    t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "expired_at"
+    t.integer  "user_id"
+  end
+
+  add_index "facebook_auths", ["user_id"], name: "index_facebook_auths_on_user_id"
 
   create_table "todos", force: true do |t|
     t.string   "title"
