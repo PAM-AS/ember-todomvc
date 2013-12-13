@@ -19,7 +19,7 @@
         <div>
           <img {{bind-attr src="App.FBUser.picture" alt="App.FBUser.name"}} />
           {{App.FBUser.name}}
-          <a href="#" {{action "logout" target="FB"}}>Logout</a>
+          <a href="#" {{action "logout"}}>Logout</a>
         <div>
       {{else}}
         <button class="btn btn-primary btn-lrg" {{action 'login' "facebook"}}>Log in with Facebook</button>
