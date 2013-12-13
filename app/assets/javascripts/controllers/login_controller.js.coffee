@@ -23,6 +23,15 @@ App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMi
       contentType: 'application/x-www-form-urlencoded'
     }
 
+  makeFacebookSession: (->
+    if App.FBUser
+      user = App.FBUser
+      requestOptions = @facebookTokenRequestOptions(user.accessToken, user.id)
+      Ember.$.ajax(Ember.SimpleAuth.serverTokenEndpoint, requestOptions).then (response) =>
+        @get('session').setup response
+        @send 'loginSucceeded'
+  ).observes 'App.FBUser'
+
 
   actions:
     loginFailed: (xhr, status, error) ->
@@ -40,9 +49,6 @@ App.LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMi
               @send 'loginSucceeded'
             ), (xhr, status, error) =>
               @send 'loginFailed', xhr, status, error
-
-          # Redirect to add email if nonexistent
-          # Redirect to todos if email is present
         ), scope: 'email'
 
       else
