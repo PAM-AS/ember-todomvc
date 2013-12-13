@@ -3,9 +3,14 @@ App.ApplicationRoute = Ember.Route.extend Ember.SimpleAuth.ApplicationRouteMixin
   actions:
 
     logout: ->
-      @get('session').destroy()
-      FB.logout()
-      App.reset()
+      if App.FBUser?
+        FB.logout (response) =>
+          console.log "Logged out of facebook"
+          @get('session').destroy()
+          App.reset()
+      else
+        @get('session').destroy()
+        App.reset()
 
     # error: ->
       # If all else fails...
