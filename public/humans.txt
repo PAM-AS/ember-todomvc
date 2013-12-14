@@ -3,7 +3,9 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Kim Røen -- Developer -- @kimroen
+    Terje Elde -- Developer, System Operations -- @terjeelde
+    Thomas Sunde Nielsen -- iPhone developer -- @thomassnielsen
 
 # THANKS
 
