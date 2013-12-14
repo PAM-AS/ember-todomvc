@@ -1,5 +1,12 @@
-<ul>
-{{#each}}
-  <li>{{this}}</li>
-{{/each}}
-</ul>
+<h2>{{title}}</h2>
+<p>{{body}}</p>
+<small>{{user}}</small>
+<section class="comments">
+  <ul>
+    {{#each comment in comments}}
+      <li>
+        <div>{{comment.body}}</div>
+      </li>
+    {{/each}}
+  </ul>
+</section>
