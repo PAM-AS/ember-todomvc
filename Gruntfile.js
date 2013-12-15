@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 
   config.env = process.env;
 
-  
+
 
 
   // App Kit's Main Tasks
@@ -168,6 +168,7 @@ module.exports = function(grunt) {
         "buildTemplates:dist",
         "buildScripts",
         "buildStyles",
+        "buildExtras",
         "buildIndexHTML:dist"
       ],
       buildDebug: [
@@ -211,6 +212,11 @@ module.exports = function(grunt) {
                      // ToDo: Add 'autoprefixer'
                      ]));
 
+  // Extras
+  grunt.registerTask('buildExtras', [
+                     'copy:extrasToResult'
+                     ]);
+
   // Index HTML
   grunt.registerTask('buildIndexHTML:dist', [
                      'preprocess:indexHTMLDistApp',
@@ -230,7 +236,7 @@ module.exports = function(grunt) {
       grunt.config('watch.' + key, config);
     });
   });
-  
+
   grunt.registerTask('createResultDirectory', function() {
     grunt.file.mkdir('tmp/result');
   });
