@@ -42,6 +42,13 @@ App.initializer
           @set 'user', container.lookup('store:main').find 'user', userId
       ).property 'userId'
 
+    # Custom options and things
+    Ember.SimpleAuth.setup container, application,
+      routeAfterLogin: 'todos'
+      routeAfterLogout: 'login'
+      # serverTokenEndpoint: 'api/v1/session'
+      serverTokenEndpoint: 'http://de1.pam.as:3003/api/v1/session'
+      crossOriginWhitelist: ['http://de1.pam.as:3003']
 # App.set 'appId', '178730775657812' # TODO: Make sure this is valid
 
 Ember.RSVP.configure 'onerror', (error) ->
@@ -50,5 +57,6 @@ Ember.RSVP.configure 'onerror', (error) ->
   if error instanceof Error
     Ember.Logger.assert false, error
     Ember.Logger.error error.stack
+
 
 `export default App`
