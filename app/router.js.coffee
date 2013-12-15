@@ -11,7 +11,7 @@ Router.map ->
   @route 'login'
   @route 'top_secret'
 
-# Router.reopen
-#   location: 'history'
+Router.reopen
+  location: 'history'
 
 `export default Router`
