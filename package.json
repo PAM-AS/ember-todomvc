@@ -2,7 +2,7 @@
   "name": "app-kit",
   "namespace": "appkit",
   "APIMethod": "proxy",
-  "proxyURL": "http://de1.pam.as:3003",
+  "proxyURL": "http://de1.pam.as:3003/",
   "version": "0.0.0",
   "private": true,
   "directories": {
