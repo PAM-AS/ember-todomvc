@@ -1,5 +1,3 @@
-# TODO: Make sure this will work. Might possibly need to go into some other file
-
 UsersNewController = Ember.ObjectController.extend
   actions:
     createUser: ->
