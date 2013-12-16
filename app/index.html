@@ -103,7 +103,7 @@
 
   <!-- @if tests=false -->
   <script>
-    window.App = require('appkit/app')["default"].create();
+    window.App = require('appkit/app')["default"].createWithMixins(Ember.Facebook);
   </script>
   <!-- @endif -->
 
