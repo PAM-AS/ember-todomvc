@@ -9,4 +9,4 @@
 
 window.ENV = {};
 
-window.ENV.fb_appId = '178730775657812'
+window.ENV.fb_appId = '178730775657812';
