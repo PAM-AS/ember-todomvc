@@ -26,13 +26,13 @@ LoginController = Ember.Controller.extend Ember.SimpleAuth.LoginControllerMixin,
     }
 
   makeFacebookSession: (->
-    if FBUser
-      user = FBUser
+    if App.FBUser
+      user = App.FBUser
       requestOptions = @facebookTokenRequestOptions user.accessToken, user.id
       Ember.$.ajax(Ember.SimpleAuth.serverTokenEndpoint, requestOptions).then (response) =>
         @get('session').setup response
         @send 'loginSucceeded'
-  ).observes 'FBUser'
+  ).observes 'App.FBUser'
 
   actions:
     loginFailed: (xhr, status, error) ->
