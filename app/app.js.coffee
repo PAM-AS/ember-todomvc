@@ -10,7 +10,7 @@ App = Ember.Application.extend
   Resolver: Resolver['default']
 
   ready: ->
-    @set 'appId', '178730775657812'
+    @set 'appId', ENV.fb_appId
 
 App.initializer
   name: 'authentication'

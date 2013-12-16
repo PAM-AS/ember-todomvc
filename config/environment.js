@@ -8,3 +8,5 @@
 // window.ENV = {FEATURES: {'with-controller': true}};
 
 window.ENV = {};
+
+window.ENV.fb_appId = '178730775657812'
