@@ -49,7 +49,6 @@ App.initializer
       # serverTokenEndpoint: 'api/v1/session'
       serverTokenEndpoint: 'http://de1.pam.as:3003/api/v1/session'
       crossOriginWhitelist: ['http://de1.pam.as:3003']
-# App.set 'appId', '178730775657812' # TODO: Make sure this is valid
 
 Ember.RSVP.configure 'onerror', (error) ->
   # ensure unhandled promises raise awareness.
