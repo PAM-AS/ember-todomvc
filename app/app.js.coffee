@@ -9,6 +9,9 @@ App = Ember.Application.extend
   modulePrefix: 'appkit' # TODO: loaded via config
   Resolver: Resolver['default']
 
+  ready: ->
+    @set 'appId', '178730775657812'
+
 App.initializer
   name: 'authentication'
 
