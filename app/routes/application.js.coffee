@@ -1,5 +1,6 @@
 # TODO: Require FBUser and check the App.reset()
 ApplicationRoute = Ember.Route.extend Ember.SimpleAuth.ApplicationRouteMixin,
+
   actions:
     logout: ->
       if FBUser?
