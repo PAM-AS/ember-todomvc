@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-keys:
-  title: Find my keys
-  is_completed: false
-
-lipstick:
-  title: Kill the guy with the hammer
-  is_completed: true
